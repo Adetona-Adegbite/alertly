@@ -1,0 +1,143 @@
+.hero {
+  background: linear-gradient(rgb(8, 0, 17), rgba(27, 0, 56, 0.9)),
+    url("../assets/rishabh-sharma-R-js25Pv1LQ-unsplash.jpg") no-repeat center
+      center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+.hero nav {
+  width: 82%;
+  height: 15%;
+}
+.hero nav ul {
+  list-style: none;
+}
+.hero nav a {
+  text-decoration: none;
+  color: #fff;
+}
+.hero nav > ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.hero nav ul .logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.hero nav ul .logo a {
+  color: rgb(223, 194, 255);
+}
+
+.hero nav ul .menuItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  font-size: 18px;
+  transition: all 0.5s;
+}
+.hero nav ul .menuItems a:hover {
+  color: rgb(223, 194, 255);
+}
+.hero nav ul button {
+  background: none;
+  border: 2px solid rgb(53, 0, 109);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.hero nav ul button:hover {
+  background: rgb(53, 0, 109);
+}
+.hero .headline {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.hero .headline h1 {
+  font-size: 6rem;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 6.5rem;
+}
+.hero .headline h1 span {
+  color: rgb(171, 123, 222);
+}
+.hero .headline p {
+  text-align: center;
+  margin-top: 3%;
+  width: 40%;
+  color: rgb(235, 217, 255);
+}
+
+.hero .headline .buttons {
+  margin-top: 3%;
+  display: flex;
+  gap: 20px;
+}
+.hero .headline button {
+  background: none;
+  border: 2px solid rgb(53, 0, 109);
+  color: #fff;
+  padding: 20px 25px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+
+  margin-top: 3%;
+}
+
+.hero .headline .button1 {
+  background-color: rgb(53, 0, 109);
+}
+.hero .headline .button1:hover {
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.5s;
+}
+
+.hero .headline .button2 {
+  background-color: rgba(0, 0, 0, 0);
+}
+.hero .headline .button2:hover {
+  background-color: rgb(53, 0, 109);
+  transition: all 0.5s;
+}
+.hero .technologies {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero .technologies h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.hero .technologies div {
+  display: flex;
+  width: 200%;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+.hero .technologies div img {
+  width: 50px;
+  height: 50px;
+  filter: sepia(100%) hue-rotate(240deg) saturate(200%);
+}
