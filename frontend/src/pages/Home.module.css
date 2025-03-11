@@ -14,6 +14,7 @@
 }
 .hero nav ul {
   list-style: none;
+  cursor: pointer;
 }
 .hero nav a {
   text-decoration: none;
@@ -140,4 +141,235 @@
   width: 50px;
   height: 50px;
   filter: sepia(100%) hue-rotate(240deg) saturate(200%);
+}
+
+.hero2 {
+  background: linear-gradient(rgba(27, 0, 56, 0.9), rgb(8, 0, 17)),
+    url("../assets/rishabh-sharma-R-js25Pv1LQ-unsplash.jpg") no-repeat center
+      center;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+.hero2 h1 {
+  font-size: 4.5rem;
+  margin-top: 10px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 5rem;
+}
+.hero2 h1 span {
+  color: rgb(156, 98, 218);
+}
+
+.hero2 p {
+  text-align: center;
+  margin-top: 3%;
+  width: 40%;
+  color: rgb(235, 217, 255);
+}
+.featureContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+}
+
+.illustration {
+  height: auto;
+  border-radius: 8px;
+  width: 50%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featureList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+  width: 50%;
+  place-items: center;
+}
+.featureList div {
+  padding: 20px;
+}
+.featureList img {
+  width: 80px;
+  height: 80px;
+  filter: brightness(0) invert(1);
+}
+
+.featureItem {
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.featureTitle {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.featureText {
+  font-size: 0.9rem;
+  /* border: 1px solid #25d366; */
+  line-height: 1.7;
+  width: 200px !important;
+  margin: auto;
+  color: #667781;
+}
+/* .hero3 {
+  background: linear-gradient(rgba(11, 0, 22, 0.9), rgb(8, 0, 17)),
+    url("../assets/rishabh-sharma-R-js25Pv1LQ-unsplash.jpg") no-repeat center
+      center;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+} */
+/* FAQ Section */
+.faqSection {
+  padding: 4rem 2rem;
+  background: rgb(6, 0, 12);
+  text-align: center;
+}
+
+.faqSection h1 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.faqList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faqQuestion {
+  width: 100%;
+  padding: 1.5rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #2d3436;
+}
+
+.faqQuestion .indicator {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.faqQuestion .indicator::after {
+  content: "+";
+  font-size: 1.5rem;
+  color: #25d366;
+  transition: transform 0.3s ease;
+}
+
+.faqItem.active .indicator::after {
+  content: "-";
+}
+
+.faqAnswer {
+  padding: 0 1.5rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.faqAnswer p {
+  padding: 1rem 0 2rem;
+  margin: 0;
+  color: #636e72;
+  line-height: 1.6;
+}
+
+/* Footer Styles */
+.footer {
+  background: rgb(6, 0, 12);
+  padding: 4rem 2rem 2rem;
+}
+
+.footerContent {
+  max-width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  padding-bottom: 3rem;
+}
+
+.footerColumn h4 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.footerColumn ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerColumn li {
+  margin-bottom: 1rem;
+  color: #636e72;
+}
+
+.footerColumn a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerColumn a:hover {
+  color: rgb(223, 194, 255);
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socialLinks a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.socialLinks a:hover {
+  background: rgb(223, 194, 255);
+  color: white;
+}
+
+.footerBottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  color: white;
+  font-size: 0.9rem;
 }

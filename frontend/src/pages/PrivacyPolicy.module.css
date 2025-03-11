@@ -1,0 +1,47 @@
+/* Privacy Policy Page Styles */
+
+.page {
+  height: 100vh;
+  background: linear-gradient(rgb(8, 0, 17), rgba(27, 0, 56, 0.9)),
+    url("../assets/rishabh-sharma-R-js25Pv1LQ-unsplash.jpg") no-repeat center
+      center;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  background: #fff;
+  padding: 30px;
+  max-width: 800px;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page h1 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.page h2 {
+  font-size: 22px;
+  color: #444;
+  margin-top: 20px;
+}
+
+.page p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.page a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.page a:hover {
+  text-decoration: underline;
+}

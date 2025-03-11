@@ -1,0 +1,39 @@
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/database");
+
+const Subscription = sequelize.define(
+  "Subscription",
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    planId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.ENUM("active", "expired"),
+      allowNull: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+module.exports = Subscription;
