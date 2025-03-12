@@ -209,6 +209,11 @@ const HomePage = () => {
               <li>
                 <a onClick={() => navigate("delete-account")}>Delete Account</a>
               </li>
+              <li>
+                <a onClick={() => navigate("terms-of-service")}>
+                  Terms of Service
+                </a>
+              </li>
             </ul>
           </div>
 

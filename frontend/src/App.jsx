@@ -3,6 +3,7 @@ import HomePage from "./pages/Home";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { DeleteAccount } from "./pages/DeleteAccountPage";
 import RegisterationPage from "./pages/RegisterationForm";
+import { TermsOfService } from "./pages/TermsofService";
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ function App() {
     {
       path: "/register",
       element: <RegisterationPage />,
+    },
+    {
+      path: "/terms-of-service",
+      element: <TermsOfService />,
     },
   ]);
   return <RouterProvider router={router} />;
