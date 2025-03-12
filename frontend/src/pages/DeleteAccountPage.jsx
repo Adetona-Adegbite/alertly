@@ -41,7 +41,7 @@ export const DeleteAccount = () => {
           </li>
         </ol>
         <p>
-          If you face any issues, contact us at <b>hello@alertly.ng</b>.
+          If you face any issues, contact us at <b>adetona67@gmail.com</b>.
         </p>
       </section>
     </div>

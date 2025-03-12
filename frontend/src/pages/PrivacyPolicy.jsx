@@ -47,10 +47,11 @@ export const PrivacyPolicy = () => {
         <h2>4. Your Rights</h2>
         <p>
           You can request data deletion anytime by following the instructions on
-          our <a href="/delete">Delete Account</a> page.
+          our <a onClick={() => navigate("/delete-account")}>Delete Account </a>
+          page.
         </p>
         <p>
-          For any concerns, contact us at <b>hello@alertly.ng</b>.
+          For any concerns, contact us at <b>adetona67@gmail.com</b>.
         </p>
       </section>
     </div>
