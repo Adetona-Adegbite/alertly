@@ -81,7 +81,7 @@ const HomePage = () => {
           <p>
             Stay ahead with Alertly – the smart AI agent that delivers curated
             news straight to your WhatsApp. With news tailored to your interests
-            and delivered daily, all for just <b>200 Naira per month</b>, you’re
+            and delivered daily, all for just <b>300 Naira per month</b>, you’re
             set to never miss a beat.
           </p>
           <div className={classes.buttons}>
@@ -221,7 +221,7 @@ const HomePage = () => {
             <h4>Contact</h4>
             <ul>
               <li>adetona67@gmail.com</li>
-              <li>+234 800 000 0000</li>
+              <li>+234 901 701 0040</li>
               <div className={classes.socialLinks}>
                 <a href="#">{/* <TwitterIcon /> */}</a>
                 <a href="#">{/* <FacebookIcon /> */}</a>

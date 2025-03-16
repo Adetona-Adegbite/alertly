@@ -9,19 +9,18 @@ const Subscription = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    planId: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    category: {
+      type: DataTypes.STRING,
+    },
+
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,

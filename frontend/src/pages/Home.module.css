@@ -70,6 +70,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  overflow-y: hidden;
 }
 .hero .headline h1 {
   font-size: 6rem;
@@ -372,4 +373,178 @@
   margin-top: 2rem;
   color: white;
   font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .hero nav {
+    width: 90%;
+    height: 13%;
+  }
+  .hero nav ul .logo {
+    font-size: 2rem;
+  }
+  .hero nav ul .menuItems {
+    font-size: 16px;
+  }
+  .hero nav ul button {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+  .hero .headline h1 {
+    font-size: 5rem;
+  }
+  .hero .technologies div {
+    width: 80%;
+  }
+  .hero2 h1 {
+    font-size: 3.2rem;
+
+    line-height: 4rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hero {
+    height: 80vh;
+  }
+  .hero nav {
+    width: 90%;
+    height: 13%;
+  }
+  .hero nav > ul {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 5%;
+  }
+
+  .hero nav ul .menuItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    font-size: 18px;
+    transition: all 0.5s;
+  }
+
+  .hero nav ul .logo {
+    font-size: 1.1rem;
+  }
+  .hero nav ul .menuItems {
+    font-size: 13px;
+  }
+  .hero nav ul button {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+  .hero .headline h1 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+  .hero .headline p {
+    width: 80%;
+  }
+  .hero .technologies div {
+    width: 80%;
+  }
+  .hero2 h1 {
+    font-size: 2.2rem;
+
+    line-height: 3rem;
+  }
+  .featureContainer {
+    display: flex;
+    flex-direction: row;
+
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hero {
+    height: auto;
+    padding: 20px;
+    padding-top: 50px;
+  }
+  .hero nav ul {
+    width: 100%;
+    gap: 0;
+  }
+
+  .hero nav ul .menuItems li {
+    border-top: 1px solid white;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+
+  .hero .headline h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+
+  .hero .headline p {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .hero .headline .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero .headline button {
+    background: none;
+    border: 2px solid rgb(53, 0, 109);
+    color: #fff;
+    padding: 10px 10px;
+    font-size: 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  .hero .technologies div {
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+  .technologies h1 {
+    font-size: 16px;
+    text-align: center;
+  }
+  .hero2 h1 {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+  }
+
+  .hero2 p {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .featureContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .illustration {
+    width: 90%;
+  }
+
+  .featureList {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .faqSection {
+    padding: 2rem 1rem;
+  }
+
+  .footerContent {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }

@@ -7,7 +7,7 @@ const Subscription = require("../models/subscriptions");
 router.post("/send-otp", async (req, res) => {
   try {
     const { phoneNumber } = req.body;
-
+    console.log(phoneNumber);
     if (!phoneNumber) {
       return res
         .status(400)
@@ -16,10 +16,14 @@ router.post("/send-otp", async (req, res) => {
 
     const response = await axios.post(
       `https://api.unimtx.com/?action=otp.send&accessKeyId=${process.env.OTP_ACCESS_ID}`,
-      { to: phoneNumber }
+      {
+        to: phoneNumber,
+        // channel: "whatsapp",
+      }
     );
+    console.log(response.data);
 
-    if (response.data.success) {
+    if (response.data.message == "Success") {
       return res.json({ success: true, message: "OTP sent successfully" });
     } else {
       return res
@@ -68,9 +72,63 @@ router.post("/verify-otp", async (req, res) => {
   }
 });
 
+router.post("/register", async (req, res) => {
+  try {
+    const { email, phoneNumber, planId, category } = req.body;
+
+    if (!email || !phoneNumber || !planId) {
+      return res
+        .status(400)
+        .json({ success: false, error: "All fields are required" });
+    }
+
+    const existingUser = await Subscription.findOne({ where: { phoneNumber } });
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ success: false, error: "User already registered" });
+    }
+
+    const newUser = await Subscription.create({
+      email,
+      phoneNumber,
+      planId,
+      category,
+      status: "active",
+    });
+
+    return res.json({
+      success: true,
+      message: "User registered successfully",
+      user: newUser,
+    });
+  } catch (error) {
+    console.error("Registration Error:", error.response?.data || error.message);
+    return res
+      .status(500)
+      .json({ success: false, error: "Internal server error" });
+  }
+});
+
 router.post("/paystack/initialize", async (req, res) => {
   try {
-    const { email, name, phoneNumber, category } = req.body;
+    const { name, email, phoneNumber, category } = req.body;
+
+    if (!email || !phoneNumber) {
+      return res
+        .status(400)
+        .json({ success: false, error: "All fields are required" });
+    }
+
+    const existingUser = await Subscription.destroy({ where: { phoneNumber } });
+
+    const newUser = await Subscription.create({
+      name,
+      email,
+      phoneNumber,
+      category,
+      status: "expired",
+    });
     if (!email) {
       return res
         .status(400)
@@ -81,8 +139,8 @@ router.post("/paystack/initialize", async (req, res) => {
       "https://api.paystack.co/transaction/initialize",
       {
         email,
-        amount: 200 * 100,
-        callback_url,
+        amount: 300 * 100,
+        // callback_url: "https://www.google.com",
         plan: "PLN_53iyld2yajq0rzt",
       },
       {
