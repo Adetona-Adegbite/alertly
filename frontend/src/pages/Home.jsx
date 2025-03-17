@@ -71,7 +71,13 @@ const HomePage = () => {
                 <a href="mailto:adetona67@gmail.com">Support</a>
               </li>
             </ul>
-            <button>Register</button>
+            <button
+              onClick={() => {
+                navigate("register");
+              }}
+            >
+              Register
+            </button>
           </ul>
         </nav>
         <section id="headline" className={classes.headline}>
@@ -85,7 +91,14 @@ const HomePage = () => {
             set to never miss a beat.
           </p>
           <div className={classes.buttons}>
-            <button className={classes.button1}>Get Started Now</button>
+            <button
+              onClick={() => {
+                navigate("register");
+              }}
+              className={classes.button1}
+            >
+              Get Started Now
+            </button>
             <button className={classes.button2}>Contact Us</button>
           </div>
         </section>
