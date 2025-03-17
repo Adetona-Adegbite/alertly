@@ -47,7 +47,7 @@ const RegisterationPage = () => {
       const response = await fetch("http://44.243.115.34:3000/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber: fullPhoneNumber }),
+        body: JSON.stringify({ phoneNumber: "+" + fullPhoneNumber }),
       });
 
       const data = await response.json();
