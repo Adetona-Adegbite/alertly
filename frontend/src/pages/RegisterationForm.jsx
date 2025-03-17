@@ -7,7 +7,7 @@ const RegisterationPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [countryCode, setCountryCode] = useState("+234"); // Default Nigeria
+  const [countryCode, setCountryCode] = useState("234"); // Default Nigeria
   const [category, setCategory] = useState("");
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [otpSent, setOtpSent] = useState(false);
@@ -168,10 +168,10 @@ const RegisterationPage = () => {
               onChange={(e) => setCountryCode(e.target.value)}
               className={classes.select}
             >
-              <option value="+1">🇺🇸 United States (+1)</option>
-              <option value="+234">🇳🇬 Nigeria (+234)</option>
-              <option value="+44">🇬🇧 UK (+44)</option>
-              <option value="+91">🇮🇳 India (+91)</option>
+              <option value="1">🇺🇸 United States (+1)</option>
+              <option value="234">🇳🇬 Nigeria (+234)</option>
+              <option value="44">🇬🇧 UK (+44)</option>
+              <option value="91">🇮🇳 India (+91)</option>
             </select>
             <input
               type="tel"
