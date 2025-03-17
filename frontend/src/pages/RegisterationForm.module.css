@@ -170,3 +170,17 @@ label {
   text-align: center;
   color: #d9534f; /* error color; adjust as needed for success messages */
 }
+
+@media screen and (max-width: 800px) {
+  .formContainer {
+    width: 90%;
+    padding: 20px 20px;
+    height: 90vh;
+  }
+  .formContainer h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: #222;
+  }
+}
