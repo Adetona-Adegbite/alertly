@@ -103,7 +103,8 @@ const RegisterationPage = () => {
     //   toast.error("Please verify your OTP first!");
     //   return;
     // }
-    if (name !== "" && email !== "" && phoneNumber !== "" && category === "") {
+    console.log(name, email, phoneNumber, category);
+    if (name && email && phoneNumber && category) {
       const formattedPhoneNumber = `${countryCode}${phoneNumber}`;
       setLoading(true);
 
