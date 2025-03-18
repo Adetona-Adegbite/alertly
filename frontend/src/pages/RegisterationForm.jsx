@@ -9,11 +9,11 @@ const RegisterationPage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [countryCode, setCountryCode] = useState("234"); // Default Nigeria
   const [category, setCategory] = useState("");
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
+  // const [otp, setOtp] = useState(new Array(6).fill(""));
+  // const [otpSent, setOtpSent] = useState(false);
+  // const [otpVerified, setOtpVerified] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [timer, setTimer] = useState(0);
+  // const [timer, setTimer] = useState(0);
   const refs = useRef([]);
 
   const handlePhoneNumberChange = (e) => {
@@ -31,107 +31,108 @@ const RegisterationPage = () => {
     }, 1000);
   };
 
-  const sendOtp = async () => {
-    if (phoneNumber.length < 10) {
-      toast.error("Please enter a valid phone number");
-      return;
-    }
-    if (timer > 0) {
-      toast.warn("You have to wait a minute to request another otp");
-      return;
-    }
-    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
-    setLoading(true);
+  // const sendOtp = async () => {
+  //   if (phoneNumber.length < 10) {
+  //     toast.error("Please enter a valid phone number");
+  //     return;
+  //   }
+  //   if (timer > 0) {
+  //     toast.warn("You have to wait a minute to request another otp");
+  //     return;
+  //   }
+  //   const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+  //   setLoading(true);
 
-    try {
-      const response = await fetch("http://44.243.115.34:3000/api/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber: "+" + fullPhoneNumber }),
-      });
+  //   try {
+  //     const response = await fetch("http://44.243.115.34:3000/api/send-otp", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ phoneNumber: "+" + fullPhoneNumber }),
+  //     });
 
-      const data = await response.json();
-      if (data.success) {
-        setOtpSent(true);
-        toast.success("OTP sent successfully!");
-        startTimer();
-      } else {
-        toast.error(data.error || "Failed to send OTP");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("Server error! Try again.");
-    }
+  //     const data = await response.json();
+  //     if (data.success) {
+  //       setOtpSent(true);
+  //       toast.success("OTP sent successfully!");
+  //       startTimer();
+  //     } else {
+  //       toast.error(data.error || "Failed to send OTP");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error("Server error! Try again.");
+  //   }
 
-    setLoading(false);
-  };
+  //   setLoading(false);
+  // };
 
-  const verifyOtp = async () => {
-    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
-    const otpCode = otp.join("");
+  // const verifyOtp = async () => {
+  //   const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+  //   const otpCode = otp.join("");
 
-    if (otpCode.length < 6) {
-      toast.error("Enter a valid 6-digit OTP");
-      return;
-    }
+  //   if (otpCode.length < 6) {
+  //     toast.error("Enter a valid 6-digit OTP");
+  //     return;
+  //   }
 
-    setLoading(true);
-    try {
-      const response = await fetch("http://44.243.115.34:3000/api/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber: fullPhoneNumber, code: otpCode }),
-      });
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch("http://44.243.115.34:3000/api/verify-otp", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ phoneNumber: fullPhoneNumber, code: otpCode }),
+  //     });
 
-      const data = await response.json();
-      if (data.success) {
-        setOtpVerified(true);
-        toast.success("OTP verified!");
-      } else {
-        toast.error("Invalid OTP");
-      }
-    } catch (error) {
-      toast.error("Server error! Try again.");
-    }
-    setLoading(false);
-  };
+  //     const data = await response.json();
+  //     if (data.success) {
+  //       setOtpVerified(true);
+  //       toast.success("OTP verified!");
+  //     } else {
+  //       toast.error("Invalid OTP");
+  //     }
+  //   } catch (error) {
+  //     toast.error("Server error! Try again.");
+  //   }
+  //   setLoading(false);
+  // };
 
   const handleSubmit = async (e) => {
     console.log("Hi");
     e.preventDefault();
-    if (!otpVerified) {
-      toast.error("Please verify your OTP first!");
-      return;
+    // if (!otpVerified) {
+    //   toast.error("Please verify your OTP first!");
+    //   return;
+    // }
+    if (name !== "" && email !== "" && phoneNumber !== "" && category === "") {
+      const formattedPhoneNumber = `${countryCode}${phoneNumber}`;
+      setLoading(true);
+
+      const payload = {
+        name,
+        email,
+        phoneNumber: formattedPhoneNumber,
+        category,
+      };
+
+      try {
+        const response = await fetch(
+          "http://44.243.115.34:3000/api/paystack/initialize",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
+
+        const data = await response.json();
+        console.log(data.authorization_url);
+        window.location.href = data.authorization_url;
+      } catch (error) {
+        toast.error("Server error! Try again.");
+      }
+
+      setLoading(false);
     }
-
-    const formattedPhoneNumber = `${countryCode}${phoneNumber}`;
-    setLoading(true);
-
-    const payload = {
-      name,
-      email,
-      phoneNumber: formattedPhoneNumber,
-      category,
-    };
-
-    try {
-      const response = await fetch(
-        "http://44.243.115.34:3000/api/paystack/initialize",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
-
-      const data = await response.json();
-      console.log(data.authorization_url);
-      window.location.href = data.authorization_url;
-    } catch (error) {
-      toast.error("Server error! Try again.");
-    }
-
-    setLoading(false);
   };
 
   return (
@@ -184,16 +185,16 @@ const RegisterationPage = () => {
             />
           </div>
 
-          <button
+          {/* <button
             type="button"
             onClick={sendOtp}
             disabled={timer > 0}
             className={classes.button}
           >
             {timer > 0 ? `Resend OTP in ${timer}s` : "Send OTP"}
-          </button>
+          </button> */}
 
-          {otpSent && (
+          {/* {otpSent && (
             <>
               <div className={classes.otpContainer}>
                 <label>Enter OTP:</label>
@@ -224,7 +225,7 @@ const RegisterationPage = () => {
                 Verify OTP
               </button>
             </>
-          )}
+          )} */}
 
           <label>Select News Category:</label>
           <select
@@ -246,9 +247,7 @@ const RegisterationPage = () => {
 
           <button
             type="submit"
-            className={
-              !otpVerified || loading ? classes.disabled : classes.button
-            }
+            className={loading ? classes.disabled : classes.button}
             // disabled={!otpVerified || loading}
             onClick={handleSubmit}
           >
