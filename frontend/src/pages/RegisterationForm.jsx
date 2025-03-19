@@ -117,7 +117,7 @@ const RegisterationPage = () => {
 
       try {
         const response = await fetch(
-          "http://44.243.115.34:3000/api/paystack/initialize",
+          "https://44.243.115.34:3000/api/paystack/initialize",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
