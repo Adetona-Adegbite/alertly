@@ -1,9 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" },
-    {
-      "source": "/api/paystack/:path*",
-      "destination": "http://44.243.115.34:3000/api/paystack/:path*"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
