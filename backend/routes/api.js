@@ -161,8 +161,8 @@ router.post("/paystack/webhook", async (req, res) => {
   const event = req.body;
   const message =
     "🎉 Welcome to Alertly!\n\n" +
-    "Hi, I'm **Alertly**, your personal **AI news assistant**. 📰✨\n" +
-    "I'll keep you updated with **tailored news** that matches your interests, delivered straight to your WhatsApp.\n\n" +
+    "Hi, I'm *Alertly*, your personal *AI news assistant*. 📰✨\n" +
+    "I'll keep you updated with *tailored news* that matches your interests, delivered straight to your WhatsApp.\n\n" +
     "To ensure you never miss an update, **please save this number** to your contacts. 📲\n\n" +
     "Looking forward to keeping you informed! 🚀💜";
 
