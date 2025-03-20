@@ -1,4 +1,15 @@
 {
+   "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "aws-serverless-express": "^3.4.0",
     "axios": "^1.8.2",
