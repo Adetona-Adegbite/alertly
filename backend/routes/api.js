@@ -140,7 +140,6 @@ router.post("/paystack/initialize", async (req, res) => {
       {
         email,
         amount: 300 * 100,
-        // callback_url: "https://www.google.com",
         plan: "PLN_53iyld2yajq0rzt",
       },
       {
@@ -160,6 +159,12 @@ router.post("/paystack/initialize", async (req, res) => {
 
 router.post("/paystack/webhook", async (req, res) => {
   const event = req.body;
+  const message =
+    "🎉 Welcome to Alertly!\n\n" +
+    "Hi, I'm **Alertly**, your personal **AI news assistant**. 📰✨\n" +
+    "I'll keep you updated with **tailored news** that matches your interests, delivered straight to your WhatsApp.\n\n" +
+    "To ensure you never miss an update, **please save this number** to your contacts. 📲\n\n" +
+    "Looking forward to keeping you informed! 🚀💜";
 
   try {
     if (
@@ -170,6 +175,29 @@ router.post("/paystack/webhook", async (req, res) => {
         { status: "active" },
         { where: { email: event.data.customer.email } }
       );
+      const subscription = await Subscription.findOne({
+        where: { email: event.data.customer.email },
+      });
+
+      if (subscription) {
+        const phoneNumber = subscription.phoneNumber;
+        const apiKey = process.env.WHATSAPP_API_KEY;
+
+        await axios.post(
+          "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+          {
+            chatId: `${phoneNumber}@c.us`,
+            message: message,
+          },
+          {
+            headers: {
+              accept: "application/json",
+              authorization: `Bearer ${apiKey}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+      }
     }
 
     if (
