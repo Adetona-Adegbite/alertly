@@ -139,8 +139,8 @@ router.post("/paystack/initialize", async (req, res) => {
       "https://api.paystack.co/transaction/initialize",
       {
         email,
-        amount: 300 * 100,
-        plan: "PLN_53iyld2yajq0rzt",
+        amount: 400 * 100,
+        plan: "PLN_7rkzvvlxqhuqrvo",
       },
       {
         headers: {
