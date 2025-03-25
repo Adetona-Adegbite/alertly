@@ -17,7 +17,7 @@ const HomePage = () => {
     {
       question: "How much does it cost?",
       answer:
-        "Alertly costs only 200 Naira per month. You'll get unlimited access to curated news updates and AI summaries.",
+        "Alertly costs only 400 Naira per month. You'll get unlimited access to curated news updates and AI summaries.",
     },
     {
       question: "How often will I receive news?",
@@ -87,7 +87,7 @@ const HomePage = () => {
           <p>
             Stay ahead with Alertly – the smart AI agent that delivers curated
             news straight to your WhatsApp. With news tailored to your interests
-            and delivered daily, all for just <b>300 Naira per month</b>, you’re
+            and delivered daily, all for just <b>400 Naira per month</b>, you’re
             set to never miss a beat.
           </p>
           <div className={classes.buttons}>
