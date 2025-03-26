@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import classes from "./RegisterationForm.module.css";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 const RegisterationPage = () => {
   const [name, setName] = useState("");
@@ -20,6 +22,7 @@ const RegisterationPage = () => {
     const value = e.target.value.replace(/\D/, "");
     setPhoneNumber(value);
   };
+  const navigate = useNavigate();
 
   const startTimer = () => {
     setTimer(60);
@@ -139,7 +142,23 @@ const RegisterationPage = () => {
   return (
     <div className={classes.page}>
       <ToastContainer />
-
+      <h1
+        onClick={() => navigate(-1)}
+        style={{
+          fontSize: 24,
+          position: "absolute",
+          top: "5%",
+          left: "10%",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <IoIosArrowRoundBack />
+        Back
+      </h1>
       <div className={classes.formContainer}>
         <h2>Register for News Alerts</h2>
         <form>
