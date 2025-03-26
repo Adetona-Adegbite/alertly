@@ -271,7 +271,7 @@ const RegisterationPage = () => {
             // disabled={!otpVerified || loading}
             onClick={handleSubmit}
           >
-            {loading ? "Loading..." : "Subcribe"}
+            {loading ? "Loading..." : "Subscribe"}
           </button>
         </form>
       </div>

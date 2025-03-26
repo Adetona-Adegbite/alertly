@@ -233,8 +233,8 @@ const HomePage = () => {
           <div className={classes.footerColumn}>
             <h4>Contact</h4>
             <ul>
-              <li>adetona67@gmail.com</li>
-              <li>+234 901 701 0040</li>
+              <li>alertly.ai@gmail.com</li>
+              {/* <li>+234 901 701 0040</li> */}
               <div className={classes.socialLinks}>
                 <a href="#">{/* <TwitterIcon /> */}</a>
                 <a href="#">{/* <FacebookIcon /> */}</a>
