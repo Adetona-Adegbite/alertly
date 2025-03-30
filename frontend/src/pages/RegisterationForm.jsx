@@ -196,7 +196,7 @@ const RegisterationPage = () => {
             </select>
             <input
               type="tel"
-              placeholder="Enter phone number"
+              placeholder="8091234567"
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
               maxLength={10}

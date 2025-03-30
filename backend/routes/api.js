@@ -120,19 +120,23 @@ router.post("/paystack/initialize", async (req, res) => {
         .json({ success: false, error: "All fields are required" });
     }
 
-    const existingUser = await Subscription.destroy({ where: { phoneNumber } });
+    if (existingUser) {
+      if (existingUser.status === "active") {
+        return res.status(400).json({
+          success: false,
+          error: "User already has an active subscription",
+        });
+      }
 
-    const newUser = await Subscription.create({
-      name,
-      email,
-      phoneNumber,
-      category,
-      status: "expired",
-    });
-    if (!email) {
-      return res
-        .status(400)
-        .json({ error: "Email, amount, and callback_url are required" });
+      await existingUser.update({ name, email, category, status: "expired" });
+    } else {
+      await Subscription.create({
+        name,
+        email,
+        phoneNumber,
+        category,
+        status: "expired",
+      });
     }
 
     const response = await axios.post(
