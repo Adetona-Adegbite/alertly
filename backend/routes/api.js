@@ -119,7 +119,7 @@ router.post("/paystack/initialize", async (req, res) => {
         .status(400)
         .json({ success: false, error: "All fields are required" });
     }
-
+    const existingUser = await Subscription.findOne({ where: { phoneNumber } });
     if (existingUser) {
       if (existingUser.status === "active") {
         return res.status(400).json({
