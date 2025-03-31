@@ -193,6 +193,7 @@ const RegisterationPage = () => {
               <option value="234">🇳🇬 Nigeria (+234)</option>
               <option value="44">🇬🇧 UK (+44)</option>
               <option value="91">🇮🇳 India (+91)</option>
+              <option value="353">🇮🇪 Ireland (+353)</option>
             </select>
             <input
               type="tel"
