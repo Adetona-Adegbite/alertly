@@ -353,5 +353,53 @@ router.post("/whatsapp/webhook", async (req, res) => {
     res.status(500).send("Error processing webhook");
   }
 });
+router.get("/users", async (req, res) => {
+  try {
+    const users = await prisma.subscription.findMany({
+      select: {
+        id: true,
+        name: true,
+        phoneNumber: true,
+        category: true,
+      },
+    });
+    res.json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Failed to fetch users" });
+  }
+});
+
+router.post("/broadcast", async (req, res) => {
+  const { message, selectedUsers } = req.body;
+
+  if (!message || !selectedUsers || selectedUsers.length === 0) {
+    return res.status(400).json({ error: "Missing message or users" });
+  }
+
+  try {
+    for (const user of selectedUsers) {
+      await axios.post(
+        "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+        {
+          chatId: `${user.phoneNumber}@c.us`,
+          message: message,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            authorization: `Bearer ${process.env.WHATSAPP_API_KEY}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+    }
+
+    res.json({ success: true, sentTo: selectedUsers.length });
+  } catch (error) {
+    console.error("Broadcast error:", error.message);
+    res.status(500).json({ error: "Failed to send messages" });
+  }
+});
 
 module.exports = router;
