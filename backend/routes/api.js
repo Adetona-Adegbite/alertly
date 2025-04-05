@@ -220,5 +220,138 @@ router.post("/paystack/webhook", async (req, res) => {
     res.status(500).send("Error processing webhook");
   }
 });
+router.post("/whatsapp/webhook", async (req, res) => {
+  const event = req.body;
+  try {
+    if (event.event === "message") {
+      const { body, from } = event.data.message._data;
+      const chatId = from.split("@")[0];
+
+      const validCategories = [
+        "news",
+        "sports",
+        "entertainment",
+        "technology",
+        "business",
+        "health",
+        "fun facts",
+      ];
+
+      if (body.toLowerCase().startsWith("change category to ")) {
+        const category = body
+          .toLowerCase()
+          .replace("change category to ", "")
+          .trim();
+
+        if (category) {
+          if (validCategories.includes(category)) {
+            const subscription = await Subscription.findOne({
+              where: { phoneNumber: chatId },
+            });
+
+            if (subscription) {
+              await subscription.update({ category: category });
+
+              const confirmationMessage = `Category successfully changed to *${category}*!💜 \n You'll now receive updates related to this category.`;
+
+              await axios.post(
+                "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+                {
+                  chatId: `${chatId}@c.us`,
+                  message: confirmationMessage,
+                },
+                {
+                  headers: {
+                    accept: "application/json",
+                    authorization: `Bearer ${process.env.WHATSAPP_API_KEY}`,
+                    "content-type": "application/json",
+                  },
+                }
+              );
+            } else {
+              await axios.post(
+                "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+                {
+                  chatId: `${chatId}@c.us`,
+                  message:
+                    "Sorry, I couldn't find your subscription. Please register first.",
+                },
+                {
+                  headers: {
+                    accept: "application/json",
+                    authorization: `Bearer ${process.env.WHATSAPP_API_KEY}`,
+                    "content-type": "application/json",
+                  },
+                }
+              );
+            }
+          } else {
+            const categoriesList = `Sorry, "${category}" is not a valid category 😔. Available categories are:\n\n${validCategories
+              .map((cat) => `- ${cat}`)
+              .join(
+                "\n"
+              )}\n\nPlease use one of these categories when changing.`;
+
+            await axios.post(
+              "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+              {
+                chatId: `${chatId}@c.us`,
+                message: categoriesList,
+              },
+              {
+                headers: {
+                  accept: "application/json",
+                  authorization: `Bearer ${process.env.WHATSAPP_API_KEY}`,
+                  "content-type": "application/json",
+                },
+              }
+            );
+          }
+        } else {
+          const errorMessage =
+            "Please specify a category. Format should be 'Change category to 'category name''";
+
+          await axios.post(
+            "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+            {
+              chatId: `${chatId}@c.us`,
+              message: errorMessage,
+            },
+            {
+              headers: {
+                accept: "application/json",
+                authorization: `Bearer ${process.env.WHATSAPP_API_KEY}`,
+                "content-type": "application/json",
+              },
+            }
+          );
+        }
+      } else {
+        const defaultResponse =
+          "Hi! How can I assist you today? You can change your category by sending 'Change category to 'category name'💜.";
+
+        await axios.post(
+          "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+          {
+            chatId: `${chatId}@c.us`,
+            message: defaultResponse,
+          },
+          {
+            headers: {
+              accept: "application/json",
+              authorization: `Bearer ${process.env.WHATSAPP_API_KEY}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+      }
+    }
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Webhook processing error:", error.message);
+    res.status(500).send("Error processing webhook");
+  }
+});
 
 module.exports = router;
