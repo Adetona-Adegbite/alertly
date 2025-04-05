@@ -355,7 +355,7 @@ router.post("/whatsapp/webhook", async (req, res) => {
 });
 router.get("/users", async (req, res) => {
   try {
-    const users = await prisma.subscription.findMany({
+    const users = await Subscription.findMany({
       select: {
         id: true,
         name: true,
