@@ -379,7 +379,7 @@ router.post("/broadcast", async (req, res) => {
       await axios.post(
         "https://waapi.app/api/v1/instances/51717/client/action/send-message",
         {
-          chatId: `${user.phoneNumber}@c.us`,
+          chatId: `${user}@c.us`,
           message: message,
         },
         {
