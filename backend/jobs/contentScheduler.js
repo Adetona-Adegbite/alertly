@@ -1,7 +1,6 @@
 const cron = require("node-cron");
 const axios = require("axios");
 const News = require("../models/news");
-const axios = require("axios");
 
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
