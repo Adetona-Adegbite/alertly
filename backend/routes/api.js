@@ -206,7 +206,9 @@ router.post("/paystack/webhook", async (req, res) => {
 
     if (
       event.event === "subscription.disable" ||
-      event.event === "charge.failed"
+      event.event === "charge.failed" ||
+      event.event === "subscription.not_renew" ||
+      event.event === "invoice.failed"
     ) {
       await Subscription.update(
         { status: "expired" },

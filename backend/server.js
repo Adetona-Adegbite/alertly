@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const apiRoutes = require("./routes/api");
 const sequelize = require("./config/database");
 const cors = require("cors");
+const { scheduleContentUpdate } = require("./jobs/contentScheduler");
 
 require("dotenv").config();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
+scheduleContentUpdate();
 sequelize
   .authenticate()
   .then(() => {

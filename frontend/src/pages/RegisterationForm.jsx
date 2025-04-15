@@ -264,6 +264,7 @@ const RegisterationPage = () => {
             <option value="science">Science</option>
             <option value="sports">Sports</option>
             <option value="technology">Technology</option>
+            <option value="fun facts">Fun Facts(new)</option>
           </select>
 
           <button
