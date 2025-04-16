@@ -74,8 +74,6 @@ async function getGeminiResponse(prompt) {
 
 // Update news categories
 async function updateCategoryContent() {
-  const apiKey = process.env.WHATSAPP_API_KEY;
-
   for (const category of newsCategories) {
     const articles = await fetchArticles(category);
     if (articles.length) {
@@ -138,27 +136,34 @@ Make sure to use the exact markdown style and tone above.`;
       console.error("DB Error updating funfacts:", err.message);
     }
   }
-  await axios.post(
-    "https://waapi.app/api/v1/instances/51717/client/action/send-message",
-    {
-      chatId: `+2349017010040@c.us`,
-      message: "Database Updated Sir.",
-    },
-    {
-      headers: {
-        accept: "application/json",
-        authorization: `Bearer ${apiKey}`,
-        "content-type": "application/json",
-      },
-    }
-  );
 }
 
 // updateCategoryContent();
 
 function scheduleContentUpdate() {
-  cron.schedule("0 */12 * * *", async () => {
+  cron.schedule("0 */5 * * *", async () => {
     console.log("Running Alertly auto-update...");
+    const apiKey = process.env.WHATSAPP_API_KEY;
+
+    try {
+      await axios.post(
+        "https://waapi.app/api/v1/instances/51717/client/action/send-message",
+        {
+          chatId: `2349017010040@c.us`,
+          message: "Database Updated Sir.",
+        },
+        {
+          headers: {
+            accept: "application/json",
+            authorization: `Bearer ${apiKey}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+
     await updateCategoryContent();
   });
 }
