@@ -230,13 +230,13 @@ router.post("/whatsapp/webhook", async (req, res) => {
       const chatId = from.split("@")[0];
 
       const validCategories = [
-        "news",
-        "sports",
-        "entertainment",
+        "fun facts",
         "technology",
         "business",
-        "health",
-        "fun facts",
+        "general",
+        "science",
+        "sports",
+        "entertainment",
       ];
 
       if (body.toLowerCase().startsWith("change category to ")) {

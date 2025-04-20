@@ -141,7 +141,7 @@ Make sure to use the exact markdown style and tone above.`;
 // updateCategoryContent();
 
 function scheduleContentUpdate() {
-  cron.schedule("0 */5 * * *", async () => {
+  cron.schedule("0 */8 * * *", async () => {
     console.log("Running Alertly auto-update...");
     const apiKey = process.env.WHATSAPP_API_KEY;
 
